@@ -260,24 +260,26 @@ class _QuickAccess extends StatelessWidget {
                     style: AppText.eyebrow.copyWith(color: AppColors.wood, fontSize: 10),
                   ),
                 ),
-                // 提示用户这一行可以左右滑动
+                // 极简滑动提示：一个小圆点 + 浅色文字
                 Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Text(
-                      '可左右滑动',
-                      style: AppText.eyebrow.copyWith(
-                        fontSize: 10,
+                    Container(
+                      width: 3,
+                      height: 3,
+                      decoration: const BoxDecoration(
                         color: AppColors.faint,
-                        letterSpacing: 0.6,
-                        fontWeight: FontWeight.w400,
+                        shape: BoxShape.circle,
                       ),
                     ),
-                    const SizedBox(width: 2),
-                    const Icon(
-                      Icons.swap_horiz_rounded,
-                      size: 14,
-                      color: AppColors.faint,
+                    const SizedBox(width: 8),
+                    Text(
+                      '左右滑动浏览',
+                      style: AppText.caption.copyWith(
+                        fontSize: 11,
+                        color: AppColors.faint,
+                        letterSpacing: 1.4,
+                      ),
                     ),
                   ],
                 ),

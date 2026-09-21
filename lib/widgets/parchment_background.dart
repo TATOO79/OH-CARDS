@@ -78,11 +78,12 @@ class _Glow extends StatelessWidget {
 class _MysticPainter extends CustomPainter {
   const _MysticPainter();
 
-  static const double _moonAlpha = 0.07;
-  static const double _starAlpha = 0.12;
-  static const double _dotAlpha = 0.14;
-  static const double _mandalaAlpha = 0.07;
-  static const double _ringsAlpha = 0.06;
+  // 浓度与网页端 styles.css 的玄学装饰保持一致
+  static const double _moonAlpha = 0.13;
+  static const double _starAlpha = 0.20;
+  static const double _dotAlpha = 0.22;
+  static const double _mandalaAlpha = 0.11;
+  static const double _ringsAlpha = 0.09;
 
   double _clamp(double v, double low, double high) =>
       v < low ? low : (v > high ? high : v);

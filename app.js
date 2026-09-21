@@ -82,7 +82,7 @@ const ICONS = {
   eye: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6-10-6-10-6z"/><circle cx="12" cy="12" r="2.5"/></svg>',
   eyeOff: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3l18 18"/><path d="M10.5 5.2A10 10 0 0 1 12 5c6.5 0 10 7 10 7a17 17 0 0 1-3 3.6M6.6 6.6A17 17 0 0 0 2 12s3.5 7 10 7a9.8 9.8 0 0 0 4.5-1.1"/></svg>',
   mail: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>',
-  swipe: '<svg class="swipe-arrows" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 7 3 12l5 5M16 7l5 5-5 5"/><path d="M9 12h6"/></svg>',
+  swipe: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 7 3 12l5 5M16 7l5 5-5 5"/><path d="M9 12h6"/></svg>',
   drop: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m7 10 5-5 5 5"/><path d="M7 14l5 5 5-5"/></svg>',
 };
 
@@ -407,7 +407,7 @@ function renderHome() {
         <div class="quick-access">
           <div class="qa-label-row">
             <div class="qa-label">您想要抽取的卡组是（点击抵达）</div>
-            <div class="qa-hint">可左右滑动 ${icon('swipe', '')}</div>
+            <div class="qa-hint">左右滑动浏览</div>
           </div>
           <div class="qa-row">${chips}</div>
         </div>
@@ -709,10 +709,10 @@ function exitRound() {
 function drawBottom(s) {
   const drawn = Object.keys(s.drawn).length > 0;
   const controls = drawn
-    ? `<div class="controls"><button class="pill-btn" data-bottom-action="exit">退出</button></div>`
+    ? `<div class="controls single"><button class="pill-btn" data-bottom-action="exit">退出本轮</button></div>`
     : `<div class="controls">
-        ${enabledCatsOf(s).map((c) => countSelector(c)).join('')}
-        <button class="pill-btn" data-bottom-action="drawall">${icon('sparkle')}一键抽出</button>
+        <div class="dock-selectors">${enabledCatsOf(s).map((c) => countSelector(c)).join('')}</div>
+        <button class="pill-btn dock-go" data-bottom-action="drawall">${icon('sparkle')}一键抽出</button>
       </div>`;
 
   const summary = s.round.length > 0
@@ -730,7 +730,6 @@ function countSelector(cat) {
       <select data-count="${cat.folder}" aria-label="${cat.labelZh} 张数">
         ${[1,2,3,4,5,6,7,8,9].map((n) => `<option value="${n}" ${n === v ? 'selected' : ''}>${n}</option>`).join('')}
       </select>
-      <span>${icon('drop', 'svg18')}</span>
     </div>`;
 }
 
@@ -863,8 +862,8 @@ async function tapMixedCategory(folder) {
 function mixedBottom(s) {
   const enabled = s.round.length > 0;
   const controls = `
-    <div class="controls">
-      <button class="pill-btn" data-bottom-action="finish" ${enabled ? '' : 'disabled'} style="${enabled ? '' : 'opacity:.4'}">${icon('flag')}结束本轮抽卡</button>
+    <div class="controls single">
+      <button class="pill-btn dock-go" data-bottom-action="finish" ${enabled ? '' : 'disabled'}>${icon('flag')}结束本轮抽卡</button>
     </div>`;
   const summary = s.round.length > 0 ? summaryPanel(s.round, true, '本次汇总') : '';
   return `${controls}${summary}`;
