@@ -1,0 +1,26 @@
+*.iml
+.gradle
+/local.properties
+/.idea/
+.DS_Store
+/build
+/captures
+.externalNativeBuild
+.cxx
+local.properties
+/.gradle-home
+/.gradle-tmp
+/android/.kotlin-daemon
+/android/.kotlin/
+/.build-apk.log
+
+# Flutter / Dart 构建产物
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+.pub-cache/
+.pub/
+
+# 原始素材备份（约 1.7GB，仅本地保留；应用与网页实际使用 assets/cards）
+/PIC/

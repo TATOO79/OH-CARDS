@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#F6EFE2" />
+  <meta name="description" content="OH CARDS —— 心灵探索、沉思与自省的抽卡应用（网页版）。" />
+  <title>OH CARDS</title>
+  <link rel="stylesheet" href="styles.css?v=4" />
+</head>
+<body>
+  <div id="app" aria-live="polite">
+    <div class="boot">
+      <div class="boot-logo">OH CARDS</div>
+      <div class="boot-sub">正在准备卡牌…</div>
+    </div>
+  </div>
+
+  <!-- 抽屉（切换卡组 / 个人主页共用） -->
+  <div id="drawer-overlay" class="overlay" hidden></div>
+  <aside id="drawer" class="drawer" hidden></aside>
+
+  <!-- 弹窗（兑换码等） -->
+  <div id="modal-overlay" class="overlay" hidden></div>
+  <div id="modal" class="modal" hidden></div>
+
+  <!-- 轻提示 -->
+  <div id="toast" class="toast" hidden></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="app.js?v=4"></script>
+</body>
+</html>
